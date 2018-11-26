@@ -1,0 +1,114 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Instruction",
+    "type": "object",
+    "required": [
+        "title",
+        "instructions"
+    ],
+    "properties": {
+        "title": {
+            "type": "string",
+            "description": "Name of the route"
+        },
+        "instructions": {
+            "type": "array",
+            "items": {
+                "$ref": "#/definitions/instruction",
+                "minItems":1
+            }
+        }
+    },
+    "definitions": {
+        "instruction": {
+            "type": "object",
+            "required": ["type", "instruction"],
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "description": "Type of the instruction",
+                    "enum": [
+                        "turn",
+                        "go",
+                        "start"
+                    ]
+                },
+                "instruction": {
+                    "type": "object",
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/turn"
+                        },
+                        {
+                            "$ref": "#/definitions/go"
+                        },
+                        {
+                            "$ref": "#/definitions/start"
+                        }
+                    ]
+                }        
+            }
+        },
+        "turn": {
+            "type": "object",
+            "required": [
+                "direction"
+            ],
+            "properties": {
+                "direction": {
+                    "type": "string",
+                    "description": "Where to turn",
+                    "enum": [
+                        "left",
+                        "right"
+                    ]
+                }
+            }
+        },
+        "go": {
+            "type": "object",
+            "required": [
+                "distance"
+            ],
+            "properties": {
+                "distance": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "description": "How far to go"
+                },
+                "direction": {
+                    "type": "string",
+                    "description": "In what direction to go",
+                    "enum": [
+                        "N",
+                        "S",
+                        "E",
+                        "W"
+                    ]
+                },
+                "destination": {
+                    "type": "string",
+                    "description": "Landmark to go to"
+                }
+            }
+        },
+        "start": {
+            "type": "object",
+            "required": [
+                "position"
+            ],
+            "properties": {
+                "position": {
+                    "type": "array",
+                    "description": "Position to start from",
+                    "items": {
+                        "type": "integer",
+                        "minItems": 2,
+                        "maxItems": 2,
+                        "minimum": 0
+                    }
+                }
+            }
+        }
+    }
+}

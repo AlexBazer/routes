@@ -1,0 +1,66 @@
+{
+    "routes": [
+        {
+            "title": "To the bus station",
+            "instructions": [
+                {
+                    "type": "start",
+                    "position": [
+                        100,
+                        100
+                    ]
+                },
+                {
+                    "type": "go",
+                    "distance": 5
+                },
+                {
+                    "type": "turn",
+                    "direction": "left"
+                },
+                {
+                    "type": "go",
+                    "distance": 10
+                },
+                {
+                    "type": "go",
+                    "distance": 5,
+                    "direction": "S"
+                },
+                {
+                    "type": "go",
+                    "description": "Bus stating"
+                }
+            ]
+        },
+        {
+            "title": "To the airport",
+            "instructions": [
+                {
+                    "type": "start",
+                    "position": [
+                        555,
+                        600
+                    ]
+                },
+                {
+                    "type": "go",
+                    "distance": 12,
+                    "direction": "E"
+                },
+                {
+                    "type": "turn",
+                    "direction": "right"
+                },
+                {
+                    "type": "go",
+                    "distance": 15
+                },
+                {
+                    "type": "go",
+                    "description": "Airport"
+                }
+            ]
+        }
+    ]
+}
